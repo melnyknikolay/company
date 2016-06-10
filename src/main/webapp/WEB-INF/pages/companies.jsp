@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/resources/css/style.css">
 </head>
 <body>
-<a href="../../index.jsp">Back to main menu</a><br/>
+<a href="../../index.jsp">Start</a><br/><br/>
 <a href="<c:url value="/companies/0"/>">Main Companies list</a>
 
 <br/>
