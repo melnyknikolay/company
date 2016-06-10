@@ -1,9 +1,5 @@
 package net.nikmlk.companymanager.util;
 
-
-/**
- * Created by Николай on 10.06.2016.
- */
 public class Pair<Integer, String> {
     private Integer key;
     private String value;

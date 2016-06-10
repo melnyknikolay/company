@@ -75,7 +75,7 @@ public class CompanyServiceImpl implements CompanyService {
         }
         String tableConstructor = "";
         for (Company comp: listChildCompanies){
-            Pair<Integer, String> pairChildListData = getTableOfChildCompanies(comp.getId(), separator + "--");
+            Pair<Integer, String> pairChildListData = getTableOfChildCompanies(comp.getId(), separator + "---");
             sumEarning += pairChildListData.getKey();
             tableConstructor += pairChildListData.getValue();
         }

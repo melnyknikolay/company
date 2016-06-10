@@ -73,32 +73,8 @@ public class CompanyController {
         }
         model.addAttribute("Parrent", parrent);
 
-        //Дерево компаний я вывожу до второго уровня вложенности,
-        // в таком виде, как требуется в задании
-        String tree = this.companyService.getTableOfChildCompanies(company.getId(), "--").getValue();
-        /*List<Company> companies = this.companyService.listCompaniesByParrentId(id);
-        if (!companies.isEmpty()){
-            int summEarning = company.getEarning();
-            String innerTree = "";
-            for (Company cmp: companies){
-                summEarning += cmp.getEarning();
-                innerTree +=("---" + cmp.getCompanyName() + " | " + cmp.getEarning() + "K$" + " | ");
-                List<Company> innnerList = this.companyService.listCompaniesByParrentId(cmp.getId());
-                if (!innnerList.isEmpty()){
-                    int summEarningOfInnerList = cmp.getEarning();
-                    String innerTree2 = "";
-                    for (Company comp: innnerList){
-                        summEarningOfInnerList += comp.getEarning();
-                        innerTree2 += "-----" + comp.getCompanyName() + " | " + comp.getEarning() + "K$" + "<br/>";
-                    }
-                    innerTree += summEarningOfInnerList + "K$" + "<br/>";
-                    innerTree += innerTree2;
-                }else innerTree += "<br/>";
-            }
-            tree += summEarning + "K$" + "<br/>" + innerTree;
-        }else tree +=  "<br/>";*/
-
-        model.addAttribute("tree", tree);
+        //Дерево компании
+        model.addAttribute("tree", this.companyService.getTableOfChildCompanies(company.getId(), "").getValue());
 
         return "companydata";
     }
