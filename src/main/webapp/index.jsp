@@ -7,7 +7,7 @@
 <body>
 <h3>Company manager</h3>
 <br/>
-<a href="<c:url value="/companies/0"/>">Companies list</a>
+<a href="<c:url value="/companies"/>">Companies list</a>
 <br/>
 <br/>
 <br/>

@@ -48,15 +48,6 @@ public class CompanyDaoImpl implements CompanyDao {
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Company> listCompanies() {
-        Session session = this.sessionFactory.getCurrentSession();
-        List<Company> companyList = session.createQuery("from Company").list();
-
-        return companyList;
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
     public List<Company> listCompaniesByParrentId(int parrentId) {
         Session session = this.sessionFactory.getCurrentSession();
         List<Company> companyList = session.createQuery("from Company c where c.parrentId = :parrentId").setParameter("parrentId", parrentId).list();

@@ -12,7 +12,7 @@
 </head>
 <body>
 <a href="../../index.jsp">Start</a><br/><br/>
-<a href="<c:url value="/companies/0"/>">Main Companies list</a>
+<a href="<c:url value="/companies"/>">Main Companies list</a>
 <br/>
 <br/>
 <h1>Company Details</h1>

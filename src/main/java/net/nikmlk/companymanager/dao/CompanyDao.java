@@ -13,7 +13,5 @@ public interface CompanyDao {
 
     Company getCompanyById(int id);
 
-    List<Company> listCompanies();
-
     List<Company> listCompaniesByParrentId(int parrentId);
 }

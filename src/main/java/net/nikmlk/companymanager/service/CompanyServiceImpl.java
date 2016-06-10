@@ -53,12 +53,6 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     @Transactional
-    public List<Company> listCompanies() {
-        return this.CompanyDao.listCompanies();
-    }
-
-    @Override
-    @Transactional
     public List<Company> listCompaniesByParrentId(int parrentId) {
         return this.CompanyDao.listCompaniesByParrentId(parrentId);
     }

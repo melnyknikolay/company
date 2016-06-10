@@ -14,8 +14,6 @@ public interface CompanyService {
 
     Company getCompanyById(int id);
 
-    List<Company> listCompanies();
-
     List<Company> listCompaniesByParrentId(int parrentId);
 
     Pair<Integer, String> getTableOfChildCompanies(int id, String separator);

@@ -23,11 +23,8 @@ public class CompanyController {
     }
 
     @RequestMapping(value = "companies", method = RequestMethod.GET)
-    public String listCompanies(Model model){
-        model.addAttribute("company", new Company());
-        model.addAttribute("listCompanies", this.companyService.listCompanies());
-
-        return "companies";
+    public String listCompanies(){
+        return "redirect:/companies/0";
     }
 
     @RequestMapping(value = "/companies/add", method = RequestMethod.POST)
