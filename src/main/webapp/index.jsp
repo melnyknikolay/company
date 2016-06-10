@@ -30,5 +30,9 @@
 <br/>
 Приложение реализовано с помощью технологий Sprig MVC/Hibernate/Servlet. Используется база данных PostgreSQL, в каталоге ресурсов<br/>
 хранятся файлы инициализации и популирования БД.<br/>
+<br/>
+<br/>
+<br/>
+<a href="https://github.com/melnyknikolay/company">GitHub</a>
 </body>
 </html>
