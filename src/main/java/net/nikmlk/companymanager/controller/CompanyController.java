@@ -1,5 +1,6 @@
 package net.nikmlk.companymanager.controller;
 
+import javafx.util.Pair;
 import net.nikmlk.companymanager.model.Company;
 import net.nikmlk.companymanager.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,9 +77,8 @@ public class CompanyController {
 
         //Дерево компаний я вывожу до второго уровня вложенности,
         // в таком виде, как требуется в задании
-        String tree = "";
-        tree += (company.getCompanyName() + " | " + company.getEarning() + "K$" + " | ");
-        List<Company> companies = this.companyService.listCompaniesByParrentId(id);
+        String tree = this.companyService.getTableOfChildCompanies(company.getId(), "--").getValue();
+        /*List<Company> companies = this.companyService.listCompaniesByParrentId(id);
         if (!companies.isEmpty()){
             int summEarning = company.getEarning();
             String innerTree = "";
@@ -98,7 +98,7 @@ public class CompanyController {
                 }else innerTree += "<br/>";
             }
             tree += summEarning + "K$" + "<br/>" + innerTree;
-        }else tree +=  "<br/>";
+        }else tree +=  "<br/>";*/
 
         model.addAttribute("tree", tree);
 

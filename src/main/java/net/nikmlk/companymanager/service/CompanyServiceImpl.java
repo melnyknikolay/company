@@ -1,5 +1,6 @@
 package net.nikmlk.companymanager.service;
 
+import javafx.util.Pair;
 import net.nikmlk.companymanager.dao.CompanyDao;
 import net.nikmlk.companymanager.model.Company;
 import org.springframework.stereotype.Service;
@@ -60,6 +61,26 @@ public class CompanyServiceImpl implements CompanyService {
     @Transactional
     public List<Company> listCompaniesByParrentId(int parrentId) {
         return this.CompanyDao.listCompaniesByParrentId(parrentId);
+    }
+
+    @Override
+    public Pair<Integer, String> getTableOfChildCompanies(int id, String separator) {
+        Company company = this.getCompanyById(id);
+        String dataConcat = "<tr><td>" + separator + company.getCompanyName() + " | " + company.getEarning() + "K$";
+        List<Company> listChildCompanies = this.CompanyDao.listCompaniesByParrentId(id);
+        int sumEarning = 0;
+        if (listChildCompanies.isEmpty()){
+            return new Pair<Integer, String>(company.getEarning(), dataConcat + "</td></tr>");
+        }
+        String tableConstructor = "";
+        for (Company comp: listChildCompanies){
+            Pair<Integer, String> pairChildListData = getTableOfChildCompanies(comp.getId(), separator + "--");
+            sumEarning += pairChildListData.getKey();
+            tableConstructor += pairChildListData.getValue();
+        }
+        dataConcat += " | " + (sumEarning + company.getEarning()) + "K$" + "</td></tr>";
+        dataConcat += tableConstructor;
+        return new Pair<Integer, String>((sumEarning + company.getEarning()), dataConcat);
     }
 
 

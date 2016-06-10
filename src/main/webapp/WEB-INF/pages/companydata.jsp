@@ -34,6 +34,6 @@
 </table>
 
 <h1>Company Tree</h1>
-${tree}
+<table class="tg">${tree}</table>
 </body>
 </html>
