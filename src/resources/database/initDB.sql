@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS company;
-CREATE SEQUENCE global_seq START 1;
+DROP SEQUENCE IF EXISTS global_seq;
+CREATE SEQUENCE global_seq START 50;
 CREATE TABLE company
 (
   id INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
