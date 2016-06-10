@@ -1,6 +1,5 @@
 package net.nikmlk.companymanager.service;
 
-import javafx.util.Pair;
 import net.nikmlk.companymanager.model.Company;
 
 import java.util.List;
@@ -18,5 +17,5 @@ public interface CompanyService {
 
     public List<Company> listCompaniesByParrentId(int parrentId);
 
-    Pair<Integer,String> getTableOfChildCompanies(int id, String separator);
+    net.nikmlk.companymanager.util.Pair<Integer, String> getTableOfChildCompanies(int id, String separator);
 }

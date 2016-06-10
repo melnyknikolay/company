@@ -1,8 +1,8 @@
 package net.nikmlk.companymanager.service;
 
-import javafx.util.Pair;
 import net.nikmlk.companymanager.dao.CompanyDao;
 import net.nikmlk.companymanager.model.Company;
+import net.nikmlk.companymanager.util.Pair;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
