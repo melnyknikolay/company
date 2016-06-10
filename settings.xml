@@ -10,14 +10,14 @@
             <repositories>
                 <repository>
                     <id>postgres-repository</id>
-                    <name>JBoss Public Maven Repository Group</name>
-                    <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+                    <name>postgreSQL</name>
+                    <url>jdbc:postgresql://ec2-54-228-219-2.eu-west-1.compute.amazonaws.com:5432/d4h7ktfiebpk5d</url>
                 </repository>
             </repositories>
         </profile>
     </profiles>
 
     <activeProfiles>
-        <activeProfile>postgres-repository</activeProfile>
+        <activeProfile>postgres</activeProfile>
     </activeProfiles>
 </settings>
