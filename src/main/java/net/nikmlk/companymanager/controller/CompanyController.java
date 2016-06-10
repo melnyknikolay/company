@@ -1,5 +1,6 @@
 package net.nikmlk.companymanager.controller;
 
+import javafx.util.Pair;
 import net.nikmlk.companymanager.model.Company;
 import net.nikmlk.companymanager.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
