@@ -64,6 +64,7 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
+    @Transactional
     public Pair<Integer, String> getTableOfChildCompanies(int id, String separator) {
         Company company = this.getCompanyById(id);
         String dataConcat = "<tr><td>" + separator + company.getCompanyName() + " | " + company.getEarning() + "K$";

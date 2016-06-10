@@ -5,15 +5,15 @@ import net.nikmlk.companymanager.model.Company;
 import java.util.List;
 
 public interface CompanyDao {
-    public void addCompany(Company company);
+    void addCompany(Company company);
 
-    public void updateCompany(Company company);
+    void updateCompany(Company company);
 
-    public void removeCompany(int id);
+    void removeCompany(int id);
 
-    public Company getCompanyById(int id);
+    Company getCompanyById(int id);
 
-    public List<Company> listCompanies();
+    List<Company> listCompanies();
 
-    public List<Company> listCompaniesByParrentId(int parrentId);
+    List<Company> listCompaniesByParrentId(int parrentId);
 }
