@@ -23,13 +23,22 @@
         <property name="password" value="root"/>
     </bean>-->
 
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+    <!--<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
           destroy-method="close">
         <property name="driverClassName" value="org.postgresql.Driver"/>
         <property name="url"
                   value="jdbc:postgresql://localhost:5432/company"/>
         <property name="username" value="user"/>
         <property name="password" value="root"/>
+    </bean>-->
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+          destroy-method="close">
+        <property name="driverClassName" value="org.postgresql.Driver"/>
+        <property name="url"
+                  value="jdbc:postgresql://ec2-54-228-219-2.eu-west-1.compute.amazonaws.com:5432/d4h7ktfiebpk5d"/>
+        <property name="username" value="kkkkxupeanssgp"/>
+        <property name="password" value="DU1qd--3qecGgQPku7XbYnULK6"/>
     </bean>
 
     <!-- Hibernate 4 SessionFactory Bean definition -->
@@ -45,7 +54,7 @@
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQL9Dialect
                 </prop>
-                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.show_sql">false</prop>
             </props>
         </property>
     </bean>
