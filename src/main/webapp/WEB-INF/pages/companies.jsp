@@ -15,7 +15,7 @@
 
 <br/>
 <br/>
-<h1>${parrentName} List</h1>
+<h1>${parrentName}'s List</h1>
 
 <c:if test="${!empty listCompanies}">
     <table class="tg">
