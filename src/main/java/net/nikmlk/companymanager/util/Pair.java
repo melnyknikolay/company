@@ -1,26 +1,26 @@
 package net.nikmlk.companymanager.util;
 
-public class Pair<Integer, String> {
-    private Integer key;
-    private String value;
+public class Pair<K, V> {
+    private K key;
+    private S value;
 
-    public Integer getKey() {
+    public K getKey() {
         return key;
     }
 
-    public void setKey(Integer key) {
+    public void setKey(K key) {
         this.key = key;
     }
 
-    public String getValue() {
+    public V getValue() {
         return value;
     }
 
-    public void setValue(String value) {
+    public void setValue(V value) {
         this.value = value;
     }
 
-    public Pair(Integer key, String value) {
+    public Pair(K key, V value) {
         this.key = key;
         this.value = value;
     }
