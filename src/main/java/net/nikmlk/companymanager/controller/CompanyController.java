@@ -62,13 +62,7 @@ public class CompanyController {
 
         //Т.к. в Entity мы храним только ID родителя,
         // то для отображения полной информации нам нужно загрузить из базы имя родительской компании
-        String parrent;
-        if (company.getParrentId() == 0){
-            parrent = "NULL";
-        }else {
-            parrent = this.companyService.getCompanyById(company.getParrentId()).getCompanyName();
-        }
-        model.addAttribute("Parrent", parrent);
+        model.addAttribute("Parrent", company.getParrentId() == 0 ? "----" : this.companyService.getCompanyById(company.getParrentId()).getCompanyName());
 
         //Дерево компании
         model.addAttribute("tree", this.companyService.getTableOfChildCompanies(company.getId(), "").getValue());
@@ -83,13 +77,8 @@ public class CompanyController {
         model.addAttribute("company", company);
 
         //Название родительской компании в оглавлении списка
-        if (id != 0){
-            model.addAttribute("parrentName", this.companyService.getCompanyById(id).getCompanyName());
-        }else{
-            model.addAttribute("parrentName", "Main Companies");
-        }
-
-
+        model.addAttribute("parrentName", id != 0 ? this.companyService.getCompanyById(id).getCompanyName() : "Main Company");
+        //Список дочерних компаний
         model.addAttribute("listCompanies", this.companyService.listCompaniesByParrentId(id));
 
         return "companies";
