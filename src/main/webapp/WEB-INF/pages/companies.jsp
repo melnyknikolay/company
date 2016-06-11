@@ -12,6 +12,7 @@
 <body>
 <a href="../../index.jsp">Start</a><br/><br/>
 <a href="<c:url value="/companies"/>">Main Companies list</a>
+<button onclick="window.history.back()">Cancel</button>
 
 <br/>
 <br/>
