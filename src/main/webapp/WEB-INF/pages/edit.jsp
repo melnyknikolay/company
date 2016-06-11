@@ -12,10 +12,11 @@
 <body>
 <a href="../../index.jsp">Start</a><br/><br/>
 <a href="<c:url value="/companies"/>">Main Companies list</a>
-
 <br/>
 <br/>
-
+<button onclick="window.history.back()">Back</button>
+<br/>
+<br/>
 <h1>Edit a Company</h1>
 
 <c:url var="addAction" value="/companies/add"/>
@@ -66,6 +67,7 @@
         <tr>
             <td colspan="2">
                 <input type="submit" value="<spring:message text="Edit Company"/>"/>
+                <button onclick="window.history.back()">Cancel</button>
             </td>
 
         </tr>
