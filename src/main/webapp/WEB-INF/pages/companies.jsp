@@ -83,7 +83,6 @@
         <tr>
             <td colspan="2">
                 <input type="submit" value="<spring:message text="Add Company"/>"/>
-                <button onclick="window.history.back()">Cancel</button>
             </td>
         </tr>
     </table>
