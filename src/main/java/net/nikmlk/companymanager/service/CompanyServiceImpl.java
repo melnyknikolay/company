@@ -61,7 +61,7 @@ public class CompanyServiceImpl implements CompanyService {
     @Transactional
     public Pair<Integer, String> getTableOfChildCompanies(int id, String separator) {
         Company company = this.getCompanyById(id);
-        String dataConcat = "<tr><td>" + separator + company.getCompanyName() + " | " + company.getEarning() + "K$";
+        String dataConcat = "<tr><td>" + separator + "<a href=\"/companies/" + company.getId() + "\">" + company.getCompanyName() + "</a>" + " | " + company.getEarning() + "K$";
         List<Company> listChildCompanies = this.CompanyDao.listCompaniesByParrentId(id);
         int sumEarning = 0;
         if (listChildCompanies.isEmpty()){
