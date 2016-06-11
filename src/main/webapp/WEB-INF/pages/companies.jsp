@@ -11,11 +11,10 @@
 </head>
 <body>
 <a href="../../index.jsp">Start</a><br/><br/>
-<a href="<c:url value="/companies"/>">Main Companies list</a><>
+<a href="<c:url value="/companies"/>">Main Companies list</a>
 <br/>
 <br/>
 <button onclick="window.history.back()">Back</button>
-
 <br/>
 <br/>
 <h1>${parrentName}'s List</h1>
