@@ -2,7 +2,7 @@ package net.nikmlk.companymanager.util;
 
 public class Pair<K, V> {
     private K key;
-    private S value;
+    private V value;
 
     public K getKey() {
         return key;
