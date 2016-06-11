@@ -15,6 +15,9 @@
 <a href="<c:url value="/companies"/>">Main Companies list</a>
 <br/>
 <br/>
+<button onclick="window.history.back()">Back</button>
+<br/>
+<br/>
 <h1>Company Details</h1>
 
 
