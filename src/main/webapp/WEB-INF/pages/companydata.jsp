@@ -11,13 +11,9 @@
   <link rel="stylesheet" href="/resources/css/style.css">
 </head>
 <body>
-<a href="../../index.jsp">Start</a><br/><br/>
-<a href="<c:url value="/companies"/>">Main Companies list</a>
-<br/>
-<br/>
-<button onclick="window.history.back()">Back</button>
-<br/>
-<br/>
+<a href="../../index.jsp">Start</a><br/>
+<a href="<c:url value="/companies"/>">Main Companies list</a><br/>
+<button onclick="window.history.back()">Back</button><br/>
 <h1>Company Details</h1>
 
 
