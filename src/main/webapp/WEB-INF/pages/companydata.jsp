@@ -20,15 +20,17 @@
 <table class="tg">
   <tr>
     <th width="80">ID</th>
-    <th width="120">Company Name</th>
-    <th width="120">Earning</th>
-    <th width="120">Parrent</th>
+    <th width="120">COMPANY NAME</th>
+    <th width="120">EARNING</th>
+    <th width="120">PARRENT</th>
+    <th width="120">COUNT CHILD`S</th>
   </tr>
   <tr>
     <td>${company.id}</td>
     <td>${company.companyName}</td>
     <td>${company.earning}</td>
     <td>${Parrent}</td>
+    <td>${counrChilds}</td>
   </tr>
 </table>
 

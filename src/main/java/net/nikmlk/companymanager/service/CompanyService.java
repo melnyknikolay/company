@@ -1,7 +1,7 @@
 package net.nikmlk.companymanager.service;
 
 import net.nikmlk.companymanager.model.Company;
-import net.nikmlk.companymanager.util.Pair;
+import net.nikmlk.companymanager.util.CompanyDataStructure;
 
 import java.util.List;
 
@@ -16,5 +16,5 @@ public interface CompanyService {
 
     List<Company> listCompaniesByParrentId(int parrentId);
 
-    Pair<Integer, String> getTableOfChildCompanies(int id, String separator, final int superParrent);
+    CompanyDataStructure<Integer, String, Integer> getTableOfChildCompanies(int id, String separator, final int superParrent, int countChildCompanies);
 }

@@ -3,6 +3,7 @@ package net.nikmlk.companymanager.controller;
 import net.nikmlk.companymanager.model.Company;
 import net.nikmlk.companymanager.model.CompanyProxy;
 import net.nikmlk.companymanager.service.CompanyService;
+import net.nikmlk.companymanager.util.CompanyDataStructure;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -138,8 +139,11 @@ public class CompanyController {
         // то для отображения полной информации нам нужно загрузить из базы имя родительской компании
         model.addAttribute("Parrent", company.getParrentId() == 0 ? "----" : this.companyService.getCompanyById(company.getParrentId()).getCompanyName());
 
+        CompanyDataStructure companyDataStructure = this.companyService.getTableOfChildCompanies(id, "", id, 0);
+
         //Дерево компании
-        model.addAttribute("tree", this.companyService.getTableOfChildCompanies(id, "", id).getValue());
+        model.addAttribute("tree", companyDataStructure.getValue());
+        model.addAttribute("counrChilds", companyDataStructure.getCount());
 
         return "companydata";
     }

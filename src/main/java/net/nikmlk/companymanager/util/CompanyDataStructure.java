@@ -1,8 +1,9 @@
 package net.nikmlk.companymanager.util;
 
-public class Pair<K, V> {
+public class CompanyDataStructure<K, V, T> {
     private K key;
     private V value;
+    private T count;
 
     public K getKey() {
         return key;
@@ -20,11 +21,17 @@ public class Pair<K, V> {
         this.value = value;
     }
 
-    public Pair(K key, V value) {
-        this.key = key;
-        this.value = value;
+    public T getCount() {
+        return count;
     }
 
-    public Pair() {
+    public void setCount(T count) {
+        this.count = count;
+    }
+
+    public CompanyDataStructure(K key, V value, T count) {
+        this.key = key;
+        this.value = value;
+        this.count = count;
     }
 }
