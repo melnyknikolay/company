@@ -65,7 +65,7 @@ public class CompanyServiceImpl implements CompanyService {
         List<Company> listChildCompanies = this.CompanyDao.listCompaniesByParrentId(id);
         int sumEarning = 0;
         if (listChildCompanies.isEmpty()){
-            return new Pair<Integer, String>(company.getEarning(), dataConcat + "</td></tr>");
+            return new Pair<Integer, String>(company.getEarning(), dataConcat + "</td>" + "<td><a href=\"/addcompany/" + company.getId() + "/${company.id}" + "\">" + "Add child compay" + "</a></td>" + "</tr>");
         }
         String tableConstructor = "";
         for (Company comp: listChildCompanies){
