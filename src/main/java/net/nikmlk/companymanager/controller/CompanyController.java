@@ -39,7 +39,7 @@ public class CompanyController {
         return "redirect:/companies/" + company.getParrentId();
     }
 
-    @RequestMapping(value = "/companies/add/from/tree/", method = RequestMethod.POST)
+    @RequestMapping(value = "/add/from/tree/", method = RequestMethod.POST)
     public String addCompanyFromTree(@ModelAttribute("proxy") CompanyProxy companyProxy){
         Company company = new Company(companyProxy);
         this.companyService.addCompany(company);
