@@ -41,7 +41,7 @@
 
 <h1>Add a Company</h1>
 
-<c:url var="addAction" value="/companies/add"/>
+<c:url var="addAction" value="/add/fromlist"/>
 
 <form:form action="${addAction}" commandName="company">
     <table>

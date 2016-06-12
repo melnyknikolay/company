@@ -7,6 +7,17 @@ public class CompanyProxy {
     private int parrentId;
     private int superParrentId;
 
+    public CompanyProxy() {
+    }
+
+    public CompanyProxy(Company company,  int superParrentId) {
+        this.id = company.getId();
+        this.companyName = company.getCompanyName();
+        this.earning = company.getEarning();
+        this.parrentId = company.getParrentId();
+        this.superParrentId = superParrentId;
+    }
+
     public int getId() {
         return id;
     }

@@ -28,7 +28,24 @@ public class CompanyController {
         return "redirect:/companies/0";
     }
 
-    @RequestMapping(value = "/companies/add", method = RequestMethod.POST)
+    @RequestMapping("companies/{id}")
+    public String listCompaniesByParrentId(@PathVariable("id") int id, Model model) {
+        Company company = new Company();
+        company.setParrentId(id);
+        model.addAttribute("company", company);
+
+        //Название родительской компании в оглавлении списка
+        model.addAttribute("parrentName", id != 0 ? this.companyService.getCompanyById(id).getCompanyName() : "Main Company");
+        //Список дочерних компаний
+        model.addAttribute("listCompanies", this.companyService.listCompaniesByParrentId(id));
+
+        return "companies";
+    }
+
+
+
+
+    @RequestMapping(value = "/add/fromlist", method = RequestMethod.POST)
     public String addCompany(@ModelAttribute("company") Company company){
         if(company.getId() == 0){
             this.companyService.addCompany(company);
@@ -39,7 +56,7 @@ public class CompanyController {
         return "redirect:/companies/" + company.getParrentId();
     }
 
-    @RequestMapping(value = "/add/from/tree/", method = RequestMethod.POST)
+    @RequestMapping(value = "/add/fromtree", method = RequestMethod.POST)
     public String addCompanyFromTree(@ModelAttribute("proxy") CompanyProxy companyProxy){
         Company company = new Company(companyProxy);
         this.companyService.addCompany(company);
@@ -47,15 +64,20 @@ public class CompanyController {
         return "redirect:/companydata/" + companyProxy.getSuperParrentId();
     }
 
-    @RequestMapping(value = "/addcompany/{parrentid}/{superparrentid}")
-    public String addChildCompany(@PathVariable("parrentid") int parrentId, @PathVariable("superparrentid") int superParrentId, Model model){
-        CompanyProxy company = new CompanyProxy();
-        company.setParrentId(parrentId);
-        company.setSuperParrentId(superParrentId);
-        model.addAttribute("proxy", company);
+    @RequestMapping(value = "/addcompany/{superParrent}/{parrent}")
+    public String addChildCompany(@PathVariable("superParrent") int superParrent, @PathVariable("parrent") int parrent, Model model){
+        CompanyProxy companyProxy = new CompanyProxy();
+        companyProxy.setParrentId(parrent);
+        companyProxy.setSuperParrentId(superParrent);
+        model.addAttribute("proxy", companyProxy);
 
         return "addcompany";
     }
+
+
+
+
+
 
     @RequestMapping("/remove/{id}")
     public String removeCompany(@PathVariable("id") int id){
@@ -67,12 +89,34 @@ public class CompanyController {
         return "redirect:/companies/" + parrentID;
     }
 
+    @RequestMapping("/removefromtree/{superParrent}/{id}")
+    public String removeCompany(@PathVariable("superParrent") int superParrent, @PathVariable("id") int id){
+
+        this.companyService.removeCompany(id);
+
+        return "redirect:/companydata/" + superParrent;
+    }
+
+
+
+
     @RequestMapping("edit/{id}")
     public String editCompany(@PathVariable("id") int id, Model model){
         model.addAttribute("company", this.companyService.getCompanyById(id));
 
         return "edit";
     }
+
+    @RequestMapping("editfromtree/{superParrent}/{id}")
+    public String editCompanyFromTree(@PathVariable("superParrent") int superParrent, @PathVariable("id") int id, Model model){
+        model.addAttribute("proxy", new CompanyProxy(this.companyService.getCompanyById(id), superParrent));
+
+        return "editfromtree";
+    }
+
+
+
+
 
     @RequestMapping("companydata/{id}")
     public String companyData(@PathVariable("id") int id, Model model){
@@ -87,19 +131,5 @@ public class CompanyController {
         model.addAttribute("tree", this.companyService.getTableOfChildCompanies(id, "", id).getValue());
 
         return "companydata";
-    }
-
-    @RequestMapping("companies/{id}")
-    public String listCompaniesByParrentId(@PathVariable("id") int id, Model model) {
-        Company company = new Company();
-        company.setParrentId(id);
-        model.addAttribute("company", company);
-
-        //Название родительской компании в оглавлении списка
-        model.addAttribute("parrentName", id != 0 ? this.companyService.getCompanyById(id).getCompanyName() : "Main Company");
-        //Список дочерних компаний
-        model.addAttribute("listCompanies", this.companyService.listCompaniesByParrentId(id));
-
-        return "companies";
     }
 }

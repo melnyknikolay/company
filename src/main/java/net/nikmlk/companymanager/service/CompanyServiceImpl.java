@@ -63,11 +63,15 @@ public class CompanyServiceImpl implements CompanyService {
     @Transactional
     public Pair<Integer, String> getTableOfChildCompanies(int id, String separator, final int superParrent) {
         Company company = this.getCompanyById(id);
+        final String AddChild = "<td><a href=\"/addcompany/" + superParrent + "/" + company.getId() + "\">" + "Add child" + "</a></td>";
+        final String Edit = "<td><a href=\"/editfromtree/" + superParrent + "/" + company.getId() + "\">" + "Edit" + "</a></td>";
+        final String Delete = "<td><a href=\"/removefromtree/" + superParrent + "/" + company.getId() + "\">" + "Delete" + "</a></td>";
+        final String toList = "<td><a href=\"/companies/" + company.getId() + "\">" + "toList" + "</a></td>";
         String dataConcat = "<tr><td>" + separator + "<a href=\"/companies/" + company.getId() + "\">" + company.getCompanyName() + "</a>" + " | " + company.getEarning() + "K$";
         List<Company> listChildCompanies = this.CompanyDao.listCompaniesByParrentId(id);
         int sumEarning = 0;
         if (listChildCompanies.isEmpty()){
-            return new Pair<Integer, String>(company.getEarning(), dataConcat + "</td>" + "<td><a href=\"/addcompany/" + company.getId() + "/" + superParrent + "\">" + "Add child" + "</a></td>" + "</tr>");
+            return new Pair<Integer, String>(company.getEarning(), dataConcat + "</td>" + AddChild + Edit + Delete + toList + "</tr>");
         }
         String tableConstructor = "";
         for (Company comp: listChildCompanies){
@@ -75,7 +79,7 @@ public class CompanyServiceImpl implements CompanyService {
             sumEarning += pairChildListData.getKey();
             tableConstructor += pairChildListData.getValue();
         }
-        dataConcat += " | " + (sumEarning + company.getEarning()) + "K$" + "</td>" + "<td><a href=\"/addcompany/" + company.getId() + "/" + superParrent + "\">" + "Add child" + "</a></td>" + "</tr>";
+        dataConcat += " | " + (sumEarning + company.getEarning()) + "K$" + "</td>" + AddChild + Edit + Delete + toList + "</tr>";
         dataConcat += tableConstructor;
         return new Pair<Integer, String>((sumEarning + company.getEarning()), dataConcat);
     }
