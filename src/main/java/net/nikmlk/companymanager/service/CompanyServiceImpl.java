@@ -67,7 +67,7 @@ public class CompanyServiceImpl implements CompanyService {
         final String Edit = "<td><a href=\"/editfromtree/" + superParrent + "/" + company.getId() + "\">" + "Edit" + "</a></td>";
         final String Delete = "<td><a href=\"/removefromtree/" + superParrent + "/" + company.getId() + "\">" + "Delete" + "</a></td>";
         final String toList = "<td><a href=\"/companies/" + company.getId() + "\">" + "toList" + "</a></td>";
-        String dataConcat = "<tr><td>" + separator + "<a href=\"/companies/" + company.getId() + "\">" + company.getCompanyName() + "</a>" + " | " + company.getEarning() + "K$";
+        String dataConcat = "<tr><td>" + separator + "<a href=\"/companydata/" + company.getId() + "\">" + company.getCompanyName() + "</a>" + " | " + company.getEarning() + "K$";
         List<Company> listChildCompanies = this.CompanyDao.listCompaniesByParrentId(id);
         int sumEarning = 0;
         if (listChildCompanies.isEmpty()){
