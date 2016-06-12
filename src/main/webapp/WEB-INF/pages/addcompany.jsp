@@ -15,7 +15,7 @@
 <button onclick="window.history.back()">Back</button><br/>
 <h1>Add a Company</h1>
 
-<c:url var="addAction" value="/companies/add/from/tree/"/>
+<c:url var="addAction" value="/add/from/tree/"/>
 
 <form:form action="${addAction}" commandName="proxy">
     <table>
