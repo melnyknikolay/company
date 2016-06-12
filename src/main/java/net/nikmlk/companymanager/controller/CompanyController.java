@@ -139,7 +139,7 @@ public class CompanyController {
         // то для отображения полной информации нам нужно загрузить из базы имя родительской компании
         model.addAttribute("Parrent", company.getParrentId() == 0 ? "----" : this.companyService.getCompanyById(company.getParrentId()).getCompanyName());
 
-        CompanyDataStructure companyDataStructure = this.companyService.getTableOfChildCompanies(id, "", id, 0);
+        CompanyDataStructure companyDataStructure = this.companyService.getTableOfChildCompanies(id, "", id, -1);
 
         //Дерево компании
         model.addAttribute("tree", companyDataStructure.getValue());

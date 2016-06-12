@@ -62,7 +62,7 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     @Transactional
     public CompanyDataStructure<Integer, String, Integer> getTableOfChildCompanies(int id, String separator, final int superParrent, int countChildCompanies) {
-        int countChilds = countChildCompanies;
+        int countChilds = countChildCompanies++;
         Company company = this.getCompanyById(id);
         final String AddChild = "<td><a href=\"/addcompany/" + superParrent + "/" + company.getId() + "\">" + "Add child" + "</a></td>";
         final String Edit = "<td><a href=\"/editfromtree/" + superParrent + "/" + company.getId() + "\">" + "Edit" + "</a></td>";
@@ -76,9 +76,10 @@ public class CompanyServiceImpl implements CompanyService {
         }
         String tableConstructor = "";
         for (Company comp: listChildCompanies){
-            CompanyDataStructure<Integer, String, Integer> companyDataStruktureChildListData = getTableOfChildCompanies(comp.getId(), separator + "---", superParrent, ++countChilds);
+            CompanyDataStructure<Integer, String, Integer> companyDataStruktureChildListData = getTableOfChildCompanies(comp.getId(), separator + "---", superParrent, countChilds);
             sumEarning += companyDataStruktureChildListData.getKey();
             tableConstructor += companyDataStruktureChildListData.getValue();
+            countChilds = companyDataStruktureChildListData.getCount();
         }
         dataConcat += " | " + (sumEarning + company.getEarning()) + "K$" + "</td>" + AddChild + Edit + Delete + toList + "</tr>";
         dataConcat += tableConstructor;
