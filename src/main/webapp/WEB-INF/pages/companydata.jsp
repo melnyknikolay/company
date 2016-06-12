@@ -33,6 +33,16 @@
 </table>
 
 <h1>Company Tree</h1>
-<table class="tg">${tree}</table>
+
+<table class="tg">
+  <tr>
+    <th>COMPANY NAME</th>
+    <th width="60">ADD CHILD</th>
+    <th width="60">EDIT</th>
+    <th width="60">DELETE</th>
+    <th width="60">ToLIST</th>
+  </tr>
+  ${tree}
+</table>
 </body>
 </html>
