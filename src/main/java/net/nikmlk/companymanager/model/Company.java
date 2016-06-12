@@ -27,7 +27,7 @@ public class Company {
     }
 
     public Company(CompanyProxy companyProxy) {
-        this.parrentId = companyProxy.getId();
+        this.id = companyProxy.getId();
         this.companyName = companyProxy.getCompanyName();
         this.earning = companyProxy.getEarning();
         this.parrentId = companyProxy.getParrentId();
