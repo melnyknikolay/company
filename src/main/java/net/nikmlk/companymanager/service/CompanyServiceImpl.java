@@ -62,7 +62,7 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     @Transactional
     public CompanyDataStructure<Integer, String, Integer> getTableOfChildCompanies(int id, String separator, final int superParrent, int countChildCompanies) {
-        int countChilds = countChildCompanies++;
+        int countChilds = ++countChildCompanies;
         Company company = this.getCompanyById(id);
         final String AddChild = "<td><a href=\"/addcompany/" + superParrent + "/" + company.getId() + "\">" + "Add child" + "</a></td>";
         final String Edit = "<td><a href=\"/editfromtree/" + superParrent + "/" + company.getId() + "\">" + "Edit" + "</a></td>";
@@ -72,7 +72,7 @@ public class CompanyServiceImpl implements CompanyService {
         List<Company> listChildCompanies = this.CompanyDao.listCompaniesByParrentId(id);
         int sumEarning = 0;
         if (listChildCompanies.isEmpty()){
-            return new CompanyDataStructure<Integer, String, Integer>(company.getEarning(), dataConcat + "</td>" + AddChild + Edit + Delete + toList + "</tr>", countChildCompanies);
+            return new CompanyDataStructure<Integer, String, Integer>(company.getEarning(), dataConcat + "</td>" + AddChild + Edit + Delete + toList + "</tr>", countChilds);
         }
         String tableConstructor = "";
         for (Company comp: listChildCompanies){
