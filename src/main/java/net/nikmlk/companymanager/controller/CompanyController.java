@@ -34,8 +34,9 @@ public class CompanyController {
         company.setParrentId(id);
         model.addAttribute("company", company);
 
-        model.addAttribute("ID", this.companyService.getCompanyById(id).getParrentId());
-        //Название родительской компании в оглавлении списка
+        //ID родительской компании по отношению к текущей компании (для поднятия на уровень выше во вложениях списков компаний)
+        model.addAttribute("ID", id != 0 ? this.companyService.getCompanyById(id).getParrentId() : 0);
+        //Название компании в оглавлении списка
         model.addAttribute("parrentName", id != 0 ? this.companyService.getCompanyById(id).getCompanyName() : "Main Company");
         //Список дочерних компаний
         model.addAttribute("listCompanies", this.companyService.listCompaniesByParrentId(id));
@@ -128,6 +129,8 @@ public class CompanyController {
         Company company = this.companyService.getCompanyById(id);
         model.addAttribute("company", company);
 
+        //ID родительской компании по отношению к текущей компании (для поднятия на уровень выше во вложениях списков компаний)
+        model.addAttribute("ID", id != 0 ? this.companyService.getCompanyById(id).getParrentId() : 0);
         //Т.к. в Entity мы храним только ID родителя,
         // то для отображения полной информации нам нужно загрузить из базы имя родительской компании
         model.addAttribute("Parrent", company.getParrentId() == 0 ? "----" : this.companyService.getCompanyById(company.getParrentId()).getCompanyName());

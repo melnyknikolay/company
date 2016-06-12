@@ -12,8 +12,8 @@
 <body>
 <a href="../../index.jsp">Start</a><br/>
 <a href="<c:url value="/companies"/>">Main Companies list</a><br/>
-<button onclick="window.history.back()">Back</button><br/>
-<button onclick="<c:url value='/companies/${ID}'/>">UP</button><br/>
+<button onclick="<c:url value='/companies/${ID}'/>">UP</button><button onclick="window.history.back()">Back</button><br/>
+<br/>
 <h1>${parrentName}'s List</h1>
 
 <c:if test="${!empty listCompanies}">
