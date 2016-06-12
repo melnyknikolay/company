@@ -15,9 +15,11 @@
 <button onclick="window.history.back()">Back</button><br/>
 <h1>Add a Company</h1>
 
-<c:url var="addAction" value="/companies/add/${superparrentid}"/>
+<c:url var="addAction" value="/companies/add/"/>
+
 
 <form:form action="${addAction}" commandName="company">
+    <form:form modelAttribute="superparrentid">${superparrentid}</form:form>
     <table>
         <tr>
             <td>
