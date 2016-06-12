@@ -38,6 +38,23 @@ public class CompanyController {
         return "redirect:/companies/" + company.getParrentId();
     }
 
+    @RequestMapping(value = "/companies/add/{superparrent}", method = RequestMethod.POST)
+    public String addCompanyFromTree(@ModelAttribute("company") Company company, @PathVariable("superparrentid") int superParrentId){
+        this.companyService.addCompany(company);
+
+        return "redirect:/companydata/" + superParrentId;
+    }
+
+    @RequestMapping(value = "/addcompany/{parrentid}/{superparrentid}")
+    public String addChildCompany(@PathVariable("parrentid") int parrentId, @PathVariable("superparrentid") int superParrentId, Model model){
+        Company company = new Company();
+        company.setParrentId(parrentId);
+        model.addAttribute("company", company);
+        model.addAttribute("superparrentid", superParrentId);
+
+        return "addcompany";
+    }
+
     @RequestMapping("/remove/{id}")
     public String removeCompany(@PathVariable("id") int id){
 

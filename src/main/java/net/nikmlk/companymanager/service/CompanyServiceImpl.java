@@ -73,7 +73,7 @@ public class CompanyServiceImpl implements CompanyService {
             sumEarning += pairChildListData.getKey();
             tableConstructor += pairChildListData.getValue();
         }
-        dataConcat += " | " + (sumEarning + company.getEarning()) + "K$" + "</td></tr>";
+        dataConcat += " | " + (sumEarning + company.getEarning()) + "K$" + "</td>" + "<td><a href=\"/addcompany/" + company.getId() + "/${company.id}" + "\">" + "Add child compay" + "</a></td>" + "</tr>";
         dataConcat += tableConstructor;
         return new Pair<Integer, String>((sumEarning + company.getEarning()), dataConcat);
     }
