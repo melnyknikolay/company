@@ -34,6 +34,7 @@ public class CompanyController {
         company.setParrentId(id);
         model.addAttribute("company", company);
 
+        model.addAttribute("ID", this.companyService.getCompanyById(id).getParrentId());
         //Название родительской компании в оглавлении списка
         model.addAttribute("parrentName", id != 0 ? this.companyService.getCompanyById(id).getCompanyName() : "Main Company");
         //Список дочерних компаний
