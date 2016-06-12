@@ -38,9 +38,9 @@
   <tr>
     <th>COMPANY NAME</th>
     <th width="60">ADD CHILD</th>
-    <th width="60">EDIT</th>
-    <th width="60">DELETE</th>
-    <th width="60">ToLIST</th>
+    <th width="40">EDIT</th>
+    <th width="40">DELETE</th>
+    <th width="40">ToLIST</th>
   </tr>
   ${tree}
 </table>
