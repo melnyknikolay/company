@@ -1,5 +1,5 @@
-1 .idea 
-2 out 
-3 target 
-4 *.iml 
-5 log 
+.idea
+out
+target
+*.iml
+log
