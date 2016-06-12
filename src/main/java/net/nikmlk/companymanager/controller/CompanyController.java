@@ -126,6 +126,9 @@ public class CompanyController {
 
     @RequestMapping("companydata/{id}")
     public String companyData(@PathVariable("id") int id, Model model){
+        if (id == 0){
+            return "redirect:/companies/";
+        }
         Company company = this.companyService.getCompanyById(id);
         model.addAttribute("company", company);
 
