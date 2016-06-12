@@ -2,11 +2,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-  <title>Company manager</title>
+  <title>Information</title>
 </head>
 <body>
-<h3>Company manager</h3>
-<br/>
 <a href="<c:url value="/companies"/>"><h1>Companies list</h1></a>
 <br/>
 <br/>
