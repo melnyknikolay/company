@@ -39,7 +39,7 @@ public class CompanyController {
     }
 
     @RequestMapping(value = "/companies/add/{superparrent}", method = RequestMethod.POST)
-    public String addCompanyFromTree(@ModelAttribute("company") Company company, @PathVariable("superparrentid") int superParrentId){
+    public String addCompanyFromTree(@PathVariable("superparrentid") int superParrentId, @ModelAttribute("company") Company company){
         this.companyService.addCompany(company);
 
         return "redirect:/companydata/" + superParrentId;
