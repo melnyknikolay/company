@@ -82,7 +82,7 @@ public class CompanyController {
         model.addAttribute("Parrent", company.getParrentId() == 0 ? "----" : this.companyService.getCompanyById(company.getParrentId()).getCompanyName());
 
         //Дерево компании
-        model.addAttribute("tree", this.companyService.getTableOfChildCompanies(company.getId(), "").getValue());
+        model.addAttribute("tree", this.companyService.getTableOfChildCompanies(id, "", id).getValue());
 
         return "companydata";
     }
