@@ -59,7 +59,11 @@ public class CompanyController {
     @RequestMapping(value = "/add/fromtree", method = RequestMethod.POST)
     public String addCompanyFromTree(@ModelAttribute("proxy") CompanyProxy companyProxy){
         Company company = new Company(companyProxy);
-        this.companyService.addCompany(company);
+        if(company.getId() == 0){
+            this.companyService.addCompany(company);
+        }else {
+            this.companyService.updateCompany(company);
+        }
 
         return "redirect:/companydata/" + companyProxy.getSuperParrentId();
     }
