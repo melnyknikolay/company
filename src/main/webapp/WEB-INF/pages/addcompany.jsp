@@ -15,11 +15,9 @@
 <button onclick="window.history.back()">Back</button><br/>
 <h1>Add a Company</h1>
 
-<c:url var="addAction" value="/companies/add/"/>
+<c:url var="addAction" value="/companies/add/from/tree/"/>
 
-
-<form:form action="${addAction}" commandName="company">
-    <form:form modelAttribute="superparrentid">${superparrentid}</form:form>
+<form:form action="${addAction}" commandName="proxy">
     <table>
         <tr>
             <td>
@@ -49,6 +47,17 @@
             </td>
             <td>
                 <form:input path="parrentId"/>
+            </td>
+        </tr>
+
+        <tr hidden>
+            <td>
+                <form:label path="superParrentId">
+                    <spring:message text="parrentId"/>
+                </form:label>
+            </td>
+            <td>
+                <form:input path="superParrentId"/>
             </td>
         </tr>
 
