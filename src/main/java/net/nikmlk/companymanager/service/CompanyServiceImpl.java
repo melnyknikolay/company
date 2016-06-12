@@ -67,7 +67,7 @@ public class CompanyServiceImpl implements CompanyService {
         List<Company> listChildCompanies = this.CompanyDao.listCompaniesByParrentId(id);
         int sumEarning = 0;
         if (listChildCompanies.isEmpty()){
-            return new Pair<Integer, String>(company.getEarning(), dataConcat + "</td>" + "<td><a href=\"/addcompany/" + company.getId() + "/" + superParrent + "\">" + "Add child compay" + "</a></td>" + "</tr>");
+            return new Pair<Integer, String>(company.getEarning(), dataConcat + "</td>" + "<td><a href=\"/addcompany/" + company.getId() + "/" + superParrent + "\">" + "Add child" + "</a></td>" + "</tr>");
         }
         String tableConstructor = "";
         for (Company comp: listChildCompanies){
@@ -75,7 +75,7 @@ public class CompanyServiceImpl implements CompanyService {
             sumEarning += pairChildListData.getKey();
             tableConstructor += pairChildListData.getValue();
         }
-        dataConcat += " | " + (sumEarning + company.getEarning()) + "K$" + "</td>" + "<td><a href=\"/addcompany/" + company.getId() + "/" + superParrent + "\">" + "Add child compay" + "</a></td>" + "</tr>";
+        dataConcat += " | " + (sumEarning + company.getEarning()) + "K$" + "</td>" + "<td><a href=\"/addcompany/" + company.getId() + "/" + superParrent + "\">" + "Add child" + "</a></td>" + "</tr>";
         dataConcat += tableConstructor;
         return new Pair<Integer, String>((sumEarning + company.getEarning()), dataConcat);
     }
