@@ -13,7 +13,7 @@
 <body>
 <a href="../../index.jsp">Start</a><br/>
 <a href="<c:url value="/companies"/>">Main Companies list</a><br/>
-<button onclick="open(/companies/${ID})">UP</button><button onclick="window.history.back()">Back</button><br/>
+<button onclick=location.href="/companies/${ID}">UP</button><button onclick="window.history.back()">Back</button><br/>
 <h1>Company Details</h1>
 
 
