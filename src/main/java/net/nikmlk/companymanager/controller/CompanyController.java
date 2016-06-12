@@ -1,6 +1,7 @@
 package net.nikmlk.companymanager.controller;
 
 import net.nikmlk.companymanager.model.Company;
+import net.nikmlk.companymanager.model.CompanyProxy;
 import net.nikmlk.companymanager.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -38,19 +39,20 @@ public class CompanyController {
         return "redirect:/companies/" + company.getParrentId();
     }
 
-    @RequestMapping(value = "/companies/add/", method = RequestMethod.POST)
-    public String addCompanyFromTree(@ModelAttribute("superparrentid") int superParrentId, @ModelAttribute("company") Company company){
+    @RequestMapping(value = "/companies/add/from/tree/", method = RequestMethod.POST)
+    public String addCompanyFromTree(@ModelAttribute("proxy") CompanyProxy companyProxy){
+        Company company = new Company(companyProxy);
         this.companyService.addCompany(company);
 
-        return "redirect:/companydata/" + superParrentId;
+        return "redirect:/companydata/" + companyProxy.getSuperParrentId();
     }
 
     @RequestMapping(value = "/addcompany/{parrentid}/{superparrentid}")
     public String addChildCompany(@PathVariable("parrentid") int parrentId, @PathVariable("superparrentid") int superParrentId, Model model){
-        Company company = new Company();
+        CompanyProxy company = new CompanyProxy();
         company.setParrentId(parrentId);
-        model.addAttribute("company", company);
-        model.addAttribute("superparrentid", superParrentId);
+        company.setSuperParrentId(superParrentId);
+        model.addAttribute("proxy", company);
 
         return "addcompany";
     }
