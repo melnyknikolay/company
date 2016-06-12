@@ -38,8 +38,8 @@ public class CompanyController {
         return "redirect:/companies/" + company.getParrentId();
     }
 
-    @RequestMapping(value = "/companies/add/{superparrent}", method = RequestMethod.POST)
-    public String addCompanyFromTree(@PathVariable("superparrentid") int superParrentId, @ModelAttribute("company") Company company){
+    @RequestMapping(value = "/companies/add/", method = RequestMethod.POST)
+    public String addCompanyFromTree(@ModelAttribute("superparrentid") int superParrentId, @ModelAttribute("company") Company company){
         this.companyService.addCompany(company);
 
         return "redirect:/companydata/" + superParrentId;
