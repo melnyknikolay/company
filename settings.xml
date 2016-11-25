@@ -11,7 +11,7 @@
                 <repository>
                     <id>postgres-repository</id>
                     <name>postgreSQL</name>
-                    <url>postgres://usgcoibfmteuwq:9Yod6OPBkGCc7mJXR-TQppFD0F@ec2-54-217-243-228.eu-west-1.compute.amazonaws.com:5432/dcvign3as0qo5t</url>
+                    <url>jdbc:postgresql://ec2-54-217-243-228.eu-west-1.compute.amazonaws.com:5432/dcvign3as0qo5t</url>
                 </repository>
             </repositories>
         </profile>
